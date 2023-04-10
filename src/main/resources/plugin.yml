@@ -1,5 +1,5 @@
 name: "DrySoil"
 version: 1.0
 author: "Koert Lichtendonk"
-main: nl.koertlichtendonk.spigotplugin.drysoil.DrySoil
+main: main.java.com.koertlichtendonk.spigot.drysoil.Main
 api-version: 1.16

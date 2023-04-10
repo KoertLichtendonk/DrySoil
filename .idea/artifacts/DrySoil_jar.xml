@@ -3,7 +3,6 @@
     <output-path>$PROJECT_DIR$/out/artifacts/DrySoil_jar</output-path>
     <root id="archive" name="DrySoil.jar">
       <element id="module-output" name="DrySoil" />
-      <element id="extracted-dir" path="$USER_HOME$/Downloads/spigot-api-1.16.4-R0.1-20210114.220528-50.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

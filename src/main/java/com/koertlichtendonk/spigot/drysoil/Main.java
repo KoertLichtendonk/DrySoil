@@ -1,7 +1,8 @@
-package nl.koertlichtendonk.spigotplugin.drysoil;
+package com.koertlichtendonk.spigot.drysoil;
 
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -11,18 +12,23 @@ import org.bukkit.event.block.BlockFadeEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class DrySoil extends JavaPlugin implements Listener
+public class Main extends JavaPlugin implements Listener
 {
+    private ConfigManager configManager;
     @Override
     public void onEnable() {
 
         getLogger().info("DrySoil has been enabled!");
         getServer().getPluginManager().registerEvents(this, this);
+
+        // Configuration
+        configManager = new ConfigManager(this);
     }
 
     @Override
     public void onDisable(){
-
+        // Save the configuration to the file
+        // configManager.saveConfig();
     }
 
     @EventHandler
@@ -68,10 +74,10 @@ public class DrySoil extends JavaPlugin implements Listener
         Block block = event.getBlock();
         Material block_mat = block.getType();
 
-        // Is clicked block soil? Turn to dirt.
-        if(block_mat == Material.FARMLAND) {
+        // Is clicked block soil or dirt?
+        if(configManager.getBlocksThatCantBeBrokenWithAHoe().contains(block_mat)) {
 
-            //Check if they clicked with a shovel
+            //Check if they clicked with a hoe
             if (mat.toString().endsWith("HOE")) {
                 event.setCancelled(true);
             }
